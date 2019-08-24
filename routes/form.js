@@ -1,5 +1,5 @@
-import express from 'express';
-import formService from '../services/FormService'
+var express = require('express');
+var formService = require('../services/FormService')
 
 const router = express.Router();
 
@@ -14,10 +14,10 @@ router.post('/', function (req, res, next) {
     formService.addForm({
         id: 1,
         data: body,
-    });
+    });    
     res.send({
         data: global.database,
     });
 });
 
-export default router;
+module.exports = router

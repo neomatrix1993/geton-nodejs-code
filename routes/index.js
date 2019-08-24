@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var { Question } = require('../models/question');
+var express = require('express')
+var router = express.Router()
+
+import {Question} from '../models/question'
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -8,4 +9,4 @@ router.get('/', function (req, res, next) {
     res.send(question.getQuestion());
 });
 
-export default router;
+module.exports = router
