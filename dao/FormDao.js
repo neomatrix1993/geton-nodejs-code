@@ -1,9 +1,8 @@
-const FormModel = require('../models/form').Model;
+const FormModel = require('../models/formModel');
 
 class FormDao {
 
     saveForm(formData) {
-        // this.data[form.id] = form.data;
         let formModel = new FormModel(formData.data);
         return formModel.save()
     }
@@ -14,13 +13,8 @@ class FormDao {
 
     getForms() {
         return FormModel.find()
-            .limit(10)
             .sort({name: 1})
             .exec()
-    }
-
-    updateGlobalDB() {
-        global.database['questions'] = data;
     }
 }
 

@@ -11,7 +11,7 @@ const typeEnums = {
 Object.freeze(typeEnums);
 
 const optionsSchema = Joi.object().keys({
-    type: Joi.any().valid(typeEnums.TEXT, typeEnums.IMAGE, typeEnums.VIDEO).required(),
+    type: Joi.any().valid(typeEnums.TEXT, typeEnums.IMAGE).required(),
     value: Joi.string().required()
 });
 
@@ -21,7 +21,7 @@ const mediaSchema = Joi.object().keys({
 });
 
 const questionSchema = Joi.object().keys({
-    type: Joi.string().valid(Object.values(typeEnums)),
+    type: Joi.string().valid(Object.values(typeEnums)).required(),
     title: Joi.string().required(),
     media: Joi.array().items(mediaSchema),
     options: Joi.array().items(optionsSchema),
