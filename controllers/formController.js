@@ -12,7 +12,7 @@ exports.getForm = async function (req, res) {
         let result = await formService.getForm(req.params.id);
         return res.send(result);
     } catch (e) {
-        return res.status(404).send({error: e.stack});
+        return res.status(404).send({error: `No document found for id: ${req.params.id}`});
     }
 };
 
@@ -28,7 +28,7 @@ exports.getForms = async function (req, res) {
         return res.status(200).send(forms);
     } catch (e) {
         console.log('No documents found' + e);
-        return res.status(404).send({error: e.stack});
+        return res.status(404).send({error: `Documents not found`});
     }
 };
 
@@ -44,12 +44,12 @@ exports.addForm = async function (req, res) {
     try {
         validatedBody = validateFormRequest(body);
     } catch (e) {
-        return res.status(400).send({error: e.stack})
+        return res.status(400).send({error: e.message})
     }
     try {
         const result = await formService.addForm({data: validatedBody});
         return res.send(result);
     } catch (e) {
-        return res.status(500).send({error: e.stack})
+        return res.status(500)
     }
 };
