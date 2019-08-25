@@ -7,3 +7,6 @@
 #### API Contracts:
 
 https://documenter.getpostman.com/view/152056/SVfMTAnq?version=latest
+
+#### Tech stack
+node.js, express.js, mongoDb, docker
