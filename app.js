@@ -8,7 +8,15 @@ var indexRouter = require('./routes/index');
 var formRouter = require('./routes/form');
 
 var app = express();
-global.database = [];
+
+// database
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://localhost:27017/form';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+global.database = {};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

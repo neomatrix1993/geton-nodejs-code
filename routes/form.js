@@ -1,23 +1,10 @@
-var express = require('express');
-var formService = require('../services/FormService')
-
+const express = require('express');
 const router = express.Router();
+const formController = require('../controllers/formController');
 
-/* GET home page. */
-router.get('/:id', function (req, res, next) {
-    const id = req.params.id;
-    res.send(formService.getForm(id));
-});
+//form routes
+router.get('/:id', formController.getForm);
+router.get('/', formController.getForms);
+router.post('/', formController.addForm);
 
-router.post('/', function (req, res, next) {
-    const body = req.body;
-    formService.addForm({
-        id: 1,
-        data: body,
-    });    
-    res.send({
-        data: global.database,
-    });
-});
-
-module.exports = router
+module.exports = router;

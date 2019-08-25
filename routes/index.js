@@ -1,12 +1,8 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express');
+const router = express.Router();
+const indexController = require('../controllers/indexController');
 
-import {Question} from '../models/question'
+//form routes
+router.get('/', indexController.getIndex);
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    const question = new Question('abc', 'xyz')
-    res.send(question.getQuestion());
-});
-
-module.exports = router
+module.exports = router;
